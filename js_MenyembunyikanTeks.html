@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Program</title>
+</head>
+<body>
+  <button id="toggleButton">Toggle Elemen</button>
+  <div id="elemenTarget">
+    <p>Ini adalah elemen yang dapat ditampilkan dan disembunyikan.</p>
+  </div>
+
+  <script>
+    // main.js
+document.addEventListener('DOMContentLoaded', function() {
+  // Mendapatkan referensi ke elemen target dan tombol
+  var elemenTarget = document.getElementById('elemenTarget');
+  var toggleButton = document.getElementById('toggleButton');
+
+  // Menambahkan event listener untuk mendeteksi klik pada tombol
+  toggleButton.addEventListener('click', function() {
+    // Mengubah visibilitas elemen target
+    if (elemenTarget.style.display === 'none' || elemenTarget.style.display === '') {
+      elemenTarget.style.display = 'block'; // Menampilkan elemen jika sedang tersembunyi
+    } else {
+      elemenTarget.style.display = 'none'; // Menyembunyikan elemen jika sedang terlihat
+    }
+  });
+});
+
+  </script>
+</body>
+</html>
