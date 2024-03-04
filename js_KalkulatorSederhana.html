@@ -14,7 +14,7 @@
 
         .body{
             height: 500px;
-            margin: 50px 50%;
+            margin: 50px 40%;
             padding: 140px;
             border: 2px solid ;
             border-radius: 25px;
@@ -210,20 +210,20 @@
             // Variables to store the operands and operator
         let operand1, operand2, operator;
 
-        // Function to handle number button click
+        // Function untuk menangani nomor ketika diklik
         function onNumberButtonClick(button) {
         const inputElement = document.querySelector('.input input');
         inputElement.value += button.textContent;
         }
 
-        // Function to handle operator button click
+        // Function unntuk menangani operator tombol
         function onOperatorButtonClick(event) {
         operand1 = parseFloat(document.querySelector('.input input').value);
         operator = event.target.textContent;
         document.querySelector('.input input').value = '';
         }
 
-        // Function to handle '=' button click
+        // Function untuk menangani operator "="
         function onEqualButtonClick() {
         operand2 = parseFloat(document.querySelector('.input input').value);
         let result;
@@ -252,7 +252,7 @@
         document.querySelector('.input input').value = result;
         }
 
-        // Function to handle 'C' button click
+        // Function untuk menangani 'C' tombol
         function onClearButtonClick() {
         document.querySelector('.input input').value = '';
         operand1 = undefined;
@@ -260,13 +260,13 @@
         operator = undefined;
         }
 
-        // Select all the number, operator, and action buttons
+        // memilih semua angka, operator, dan tombol aksi
         const numberButtons = document.querySelectorAll('.angka');
         const operatorButtons = document.querySelectorAll('.pembungkus-operator .tambah, .pembungkus-operator .kurang, .pembungkus-operator .kali, .pembungkus-operator .bagi');
         const equalButton = document.querySelector('.sama-dengan');
         const clearButton = document.querySelector('.clear');
 
-        // Add event listeners to the buttons
+        //menambahkan event listener ke tombol
         numberButtons.forEach(button => button.addEventListener('click', () => onNumberButtonClick(button)));
         operatorButtons.forEach(button => button.addEventListener('click', (event) => onOperatorButtonClick(event)));
         equalButton.addEventListener('click', () => onEqualButtonClick());
