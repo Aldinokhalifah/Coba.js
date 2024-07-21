@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Tebak angka 1-10</h1>
+    <input type="number" id="angka" max="10" min="1">
+    <button onclick="cekAngka()">CEK!</button>
+    <p id="hasil"></p>
+
+    <script>
+        function cekAngka() {
+            let angka = document.getElementById('angka').value;
+            let hasil = document.getElementById('hasil');
+            let random = Math.floor(Math.random() * 10) + 1; // Menghasilkan angka acak antara 1 dan 10
+
+            hasil.innerHTML = ''; // Membersihkan hasil sebelumnya
+
+            if (angka == random) {
+                let content = document.createTextNode('Anda Benar!');
+                hasil.appendChild(content);
+            } else {
+                let content = document.createTextNode('Anda Salah! Angka yang benar adalah ' + random);
+                hasil.appendChild(content);
+            }
+        }
+    </script>
+</body>
+</html>
