@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="output"></p>
+
+    <input type="text" name="" id="input">
+
+    <script>
+        document.getElementById('input').addEventListener('input', () => {
+            let p = document.getElementById('output');
+            let input = document.getElementById('input').value;
+
+            // Tampilkan teks input di paragraf
+            p.textContent = input;
+
+            // Periksa apakah panjang input lebih dari 100 karakter
+            if (input.length > 10) {
+                // Buat elemen h3 baru jika teks lebih dari 100 karakter
+                let h3 = document.createElement('h3');
+                h3.textContent = 'Kalimat lebih dari 10 kata';
+
+                // Tambahkan h3 ke body
+                document.body.appendChild(h3);
+            } 
+        });
+    </script>
+</body>
+</html>

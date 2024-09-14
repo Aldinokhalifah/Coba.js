@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+        }
+
+        button {
+            margin: auto;
+            margin-top: 16rem;
+            padding: 10px;
+            border-radius: 7px;
+            background-color: blue;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn" onclick="setInterval(my_click, 2000)"> Ubah warna</button>
+
+    <script>
+        function my_click() {
+            let btn = document.getElementById('btn');
+            var letters = '0123456789ABCDEF';
+            
+            function getRandomColor() {
+                var color = '#';
+                for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                console.log(`Warna saat ini: ${color}`);
+                return color;
+            }
+
+            let randomColor = getRandomColor();
+            document.body.style.backgroundColor = randomColor;
+        }
+    </script>
+</body>
+</html>

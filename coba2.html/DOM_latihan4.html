@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <p>Hallo, world</p>
+
+    <button id="add">Tampilkan</button>
+    <button id="remove">Sembunyikan</button>
+
+    <script>
+        document.getElementById('add').addEventListener('click', function() {
+            let p = document.querySelector('p');
+            p.style.opacity = '1';
+        });
+
+        document.getElementById('remove').addEventListener('click', function() {
+            let p = document.querySelector('p');
+            p.style.opacity = '0';
+        });
+    </script>
+</body>
+</html>
