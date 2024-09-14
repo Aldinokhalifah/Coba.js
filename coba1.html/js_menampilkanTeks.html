@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Program</title>
+  <style>
+    /* Gaya CSS (contoh) */
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 20px;
+}
+
+input {
+  font-size: 16px;
+  padding: 10px;
+}
+
+p {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <input type="text" id="inputText" placeholder="Masukkan teks...">
+  <p id="outputText">Teks akan muncul di sini</p>
+
+  <script>
+    // main.js
+    document.addEventListener('DOMContentLoaded', function() {
+  // Mendapatkan referensi ke elemen input dan output
+    var inputElement = document.getElementById('inputText');
+    var outputElement = document.getElementById('outputText');
+
+  // Menambahkan event listener untuk mendeteksi perubahan pada input
+    inputElement.addEventListener('input', function() {
+    // Mengubah teks pada elemen output sesuai dengan nilai input baru
+        outputElement.textContent = inputElement.value;
+  });
+});
+
+  </script>
+</body>
+</html>

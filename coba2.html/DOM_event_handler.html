@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+    width: 100px;
+    height: 100px;
+    background: green;
+}
+    </style>
+</head>
+<body>
+    <body>
+		<button id="click" onclick="myFunction()">Click Me</button>
+		<div id="box" onmouseover="over()"></div>
+
+		<script>
+			let btn = document.getElementById('click');
+			btn.addEventListener('click', myFunction);
+
+			function myFunction() {
+				alert('Hello, World');
+			}
+
+			let box = document.getElementById('box');
+			box.addEventListener('mouseover', over);
+
+			function over() {
+				box.style.transition = '1s'
+				box.style.background = 'red';
+			}
+
+		</script>
+	</body>
+</body>
+</html>

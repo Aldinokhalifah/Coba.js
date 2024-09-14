@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latiham operator logika</title>
+</head>
+<body>
+    
+
+
+    <script>
+        const x = 12;
+        let a = x % 2 == 0;
+        console.log(a);
+
+       // operator logika AND (&&)
+       let b =( x % 2 == 0) && (x < 10);
+       console.log(b);
+
+       // operator logika OR (||)
+       let c =( x % 2 == 0) || (x < 10);
+       console.log(c);
+
+       // operator NOT (!)
+       const d = 10;
+       const n = !(d < 20);
+       console.log(n);
+
+       angka = 10 + "10";
+       console.log(angka); // hasilnya "1010"
+
+       angka = "10" + 10;
+       console.log(angka); // hasilnya "1010"
+
+       angka = 10 + 10 + "10";
+       console.log(angka); // hasilnya "2010"
+
+       angka = "10" + 10 + 10;
+       console.log(angka); // hasilnya "101010"
+
+       const t = 12;
+       const v = (t < 20) ? "genap" : "ganjil";
+       console.log(v);
+    </script>
+</body>
+</html>

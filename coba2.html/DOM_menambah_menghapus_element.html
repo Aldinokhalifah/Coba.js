@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="parent">
+        <P id="child">Some Text</p>
+    </h1>
+</body>
+
+<script>
+    let parent = document.getElementById('parent')
+    let child = document.getElementById('child');
+    let p = document.createElement('h3');
+    let h = document.createElement('p');
+
+    let node = document.createTextNode('Hello, World');
+    let node_new = document.createTextNode('This is new');
+
+    p.appendChild(node);
+    h.appendChild(node_new);
+
+    parent.appendChild(p);
+    // parent.removeChild(p);
+    parent.replaceChild(h, p);
+</script>
+</html>

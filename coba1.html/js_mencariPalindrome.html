@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mencari palindrome</title>
+</head>
+<body>
+    <script>
+        function isPalindrome(str) {
+            let reversed = "";
+            // Buat variabel untuk menyimpan string yang telah dibalik
+
+            for (let i = str.length - 1; i >= 0; i--) {
+        // Loop untuk mengonversi string ke balikannya
+        reversed += str[i];
+    }
+
+    if (str === reversed) {
+        // Bandingkan string asli dengan string yang telah dibalik
+        return true; // Jika sama, kembalikan true
+    } else {
+        return false; // Jika tidak sama, kembalikan false
+    }
+    }
+
+        // Contoh pemanggilan fungsi
+        console.log(isPalindrome("madam")); // Output: true
+        console.log(isPalindrome("hello")); // Output: false
+
+    </script>
+</body>
+</html>

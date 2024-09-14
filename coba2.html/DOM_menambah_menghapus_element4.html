@@ -1,0 +1,32 @@
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Document</title>
+        </head>
+        <body>
+            <form onsubmit="addInput(event)">
+                <input type="text" id="newInput" placeholder="Masukkan teks">
+                <button type="submit">Tambah Input</button>
+            </form>
+            <div id="inputContainer"></div>
+            
+            <script>
+                function addInput(event) {
+                    event.preventDefault();
+
+                    let input = document.getElementById('newInput').value;
+
+                    let p = document.createElement('p');
+                    p.textContent = input;
+
+                    let cont = document.getElementById('inputContainer');
+                    cont.appendChild(p);
+
+                    document.getElementById('newInput').value = '';
+                }
+            </script>
+            
+        </body>
+        </html>

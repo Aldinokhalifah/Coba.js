@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan string</title>
+</head>
+<body>
+    
+
+    <script>
+        // escape karakter (\) digunakan ketika ada quote(') di dlm kalimat
+        let a = '"Gerakan pungut sampah dilaksanakan pada hari Jum\'at';
+        console.log(a)
+
+        // (\n) digunakan untuk menambahkan baris baru
+        let b = '"Gerakan pungut sampah dilaksanakan pada hari \n Jum\'at';
+        console.log(b)
+
+         // (\t) digunakan untuk menambahkan tab baru
+         let c = '"Gerakan pungut sampah dilaksanakan pada hari \t Jum\'at';
+        console.log(c)
+
+        // (\uxxx) digunakan untuk menampilkan unicode
+        let q = " ini adalah unicode untuk copyright \u00A9";
+        console.log(q);
+
+        k = '\u2122'; // menghasilkan unicode (TM)
+        console.log(k);
+
+        l = '\u00AE';
+        console.log(l); // menghasilkan unicode (R)
+
+        // mengitunng panjang dari string
+        let z = '"Gerakan pungut sampah dilaksanakan pada hari Jum\'at';
+        let x = z.length;
+        console.log(x);
+    </script>
+</body>
+</html>

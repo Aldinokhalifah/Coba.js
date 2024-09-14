@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>angka</title>
+    <!-- Sertakan library Typed.js -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+</head>
+<body>
+    <div class="auto-type"></div>
+
+    <script>
+        // Pastikan untuk memanggil fungsi setelah halaman selesai dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fungsi untuk menjalankan Typed
+            function runTyped() {
+                const targetElement = document.querySelector('.auto-type');
+
+                const options = {
+                    strings: ['', 'DEVELOPER', 'DESIGNER'],
+                    typeSpeed: 150,
+                    backSpeed: 150,
+                    loop: true,
+                };
+
+                const typed = new Typed(targetElement, options);
+            }
+
+            // Panggil fungsi runTyped
+            runTyped();
+        });
+    </script>
+</body>
+</html>

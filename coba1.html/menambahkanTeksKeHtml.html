@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar DOM</title>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+
+<script>
+    let app = document.getElementById('app');
+
+    // buat elemen h1
+    let header = document.createElement('h1');
+
+    // buat teks node untuk elemen h1
+    let headerContent = document.createTextNode('Belajar React bareng WPU✅');
+
+    // append teks ke h1
+    header.appendChild(headerContent);
+
+    // simpan elemen h1 di dalam div
+    app.appendChild(header);
+</script>
+</html>

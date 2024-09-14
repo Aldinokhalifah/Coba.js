@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM Program</title>
+  <style>
+    #teksTarget {
+      font-size: 16px;
+    }
+
+    button {
+      font-size: 16px;
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <p id="teksTarget">Ini adalah teks yang dapat diubah ukurannya.</p>
+  <button id="perbesarButton">Perbesar Teks</button>
+  <button id="perkecilButton">Perkecil Teks</button>
+
+  <script>
+    // main.js
+document.addEventListener('DOMContentLoaded', function() {
+  var teksTargetElement = document.getElementById('teksTarget');
+  var perbesarButton = document.getElementById('perbesarButton');
+  var perkecilButton = document.getElementById('perkecilButton');
+
+  perbesarButton.addEventListener('click', function() {
+    // Memperbesar ukuran teks
+    var currentSize = window.getComputedStyle(teksTargetElement).fontSize;
+    var newSize = parseFloat(currentSize) * 1.2; // Memperbesar sebanyak 20%
+    teksTargetElement.style.fontSize = newSize + 'px';
+  });
+
+  perkecilButton.addEventListener('click', function() {
+    // Memperkecil ukuran teks
+    var currentSize = window.getComputedStyle(teksTargetElement).fontSize;
+    var newSize = parseFloat(currentSize) * 0.8; // Memperkecil sebanyak 20%
+    teksTargetElement.style.fontSize = newSize + 'px';
+  });
+});
+
+  </script>
+</body>
+</html>

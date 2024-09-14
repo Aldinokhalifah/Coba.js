@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator sederhana</title>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .body{
+            height: 500px;
+            margin: 50px 40%;
+            padding: 140px;
+            border: 2px solid ;
+            border-radius: 25px;
+            box-shadow: 5px 10px 8px #888888;
+        }
+        .input{
+            position: relative;
+            right: 90px;
+            bottom: 100px;
+            margin-top: 5px;
+            margin-left: 3px;
+        }
+        input[type="text"]{
+            border: 2px solid black;
+            padding: 5px;
+            border-radius: 10px;
+            background-color: aquamarine;
+        }
+        .pembungkus-angka{
+            display: grid;
+            grid-template-columns: auto auto auto auto auto;
+            grid-template-rows: auto auto auto;
+            gap: 5px;
+            position: relative;
+            bottom:75px;
+            justify-content: center;
+        }
+        .angka{
+            padding: 15px;
+            border: 2px solid ;
+            border-radius: 5px;
+            box-shadow: 5px 10px 8px #888888;
+            cursor: pointer;
+            color: white;
+            background-color: black;
+        }
+
+        .pembungkus-operator{
+            display: grid;
+            grid-template-columns: auto auto auto;
+            cursor: pointer;
+        }
+
+        .tambah{
+            padding: 15px;
+            border-radius: 5px; 
+            border: 2px solid black;
+            position: relative;
+            right: 110px;
+            bottom: 50px;
+            width: 87px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: blue;
+            color: white;
+        }
+
+        .kali{
+            padding: 15px;
+            border-radius: 5px; 
+            border: 2px solid black;
+            position: relative;
+            bottom: 50px;
+            right: 105px;
+            width: 80px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: red;
+            color: white;
+        }
+
+        .bagi{
+            padding: 15px;
+            border-radius: 5px; 
+            border: 2px solid black;
+            position: relative;
+            bottom: 50px;
+            right: 100px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: gray;
+            color: white;
+        }
+
+        .kurang{
+            padding: 15px;
+            border-radius: 5px; 
+            border: 2px solid black;
+            position: relative;
+            right: 110px;
+            bottom: 45px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: orangered;
+            color: white;
+        }
+
+        .sama-dengan{
+            padding: 15px;
+            border-radius: 5px; 
+            border: 2px solid black;
+            position: relative;
+            right: 105px;
+            bottom: 45px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: deeppink;
+            color: white;
+        }
+        .clear{
+            padding: 15px;
+            border-radius: 5px; 
+            border: 2px solid black;
+            position: relative;
+            bottom: 45px;
+            right: 100px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 16px;
+            background-color: brown;
+            color: white;
+        }
+
+        .auto-type{
+            text-transform: uppercase;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 20px;
+            font-weight: 800;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="body">
+      <div class="input">
+        <input type="text" placeholder="masukkan angka...">
+      </div>
+
+      <div class="pembungkus-angka">
+        <div class="angka">0</div>
+        <div class="angka">1</div>
+        <div class="angka">2</div>
+        <div class="angka">3</div>
+        <div class="angka">4</div>
+        <div class="angka">5</div>
+        <div class="angka">6</div>
+        <div class="angka">7</div>
+        <div class="angka">8</div>
+        <div class="angka">9</div>
+      </div>
+
+      <div class="pembungkus-operator">
+        <div class="tambah">+</div>
+        <div class="kali">x</div>
+        <div class="bagi">:</div>
+        <div class="kurang">-</div>
+        <div class="sama-dengan">=</div>
+        <div class="clear" >C</div>
+      </div>
+
+      <div class="auto-type"></div>
+    </div>
+
+
+    <script>
+         // Pastikan untuk memanggil fungsi setelah halaman selesai dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            // Fungsi untuk menjalankan Typed
+            function runTyped() {
+                const targetElement = document.querySelector('.auto-type');
+
+                const options = {
+                    strings: ['', 'KALKULATOR SEDERHANA'],
+                    typeSpeed: 150,
+                    backSpeed: 150,
+                    loop: true,
+                };
+
+                const typed = new Typed(targetElement, options);
+            }
+
+            // Panggil fungsi runTyped
+            runTyped();
+        });
+
+            // Variables to store the operands and operator
+        let operand1, operand2, operator;
+
+        // Function untuk menangani nomor ketika diklik
+        function onNumberButtonClick(button) {
+        const inputElement = document.querySelector('.input input');
+        inputElement.value += button.textContent;
+        }
+
+        // Function unntuk menangani operator tombol
+        function onOperatorButtonClick(event) {
+        operand1 = parseFloat(document.querySelector('.input input').value);
+        operator = event.target.textContent;
+        document.querySelector('.input input').value = '';
+        }
+
+        // Function untuk menangani operator "="
+        function onEqualButtonClick() {
+        operand2 = parseFloat(document.querySelector('.input input').value);
+        let result;
+
+        switch (operator) {
+            case '+':
+            result = operand1 + operand2;
+            break;
+            case '-':
+            result = operand1 - operand2;
+            break;
+            case 'x':
+            result = operand1 * operand2;
+            break;
+            case ':':
+            if (operand2 === 0) {
+                alert('Cannot divide by zero');
+                return;
+            }
+            result = operand1 / operand2;
+            break;
+            default:
+            return;
+        }
+
+        document.querySelector('.input input').value = result;
+        }
+
+        // Function untuk menangani 'C' tombol
+        function onClearButtonClick() {
+        document.querySelector('.input input').value = '';
+        operand1 = undefined;
+        operand2 = undefined;
+        operator = undefined;
+        }
+
+        // memilih semua angka, operator, dan tombol aksi
+        const numberButtons = document.querySelectorAll('.angka');
+        const operatorButtons = document.querySelectorAll('.pembungkus-operator .tambah, .pembungkus-operator .kurang, .pembungkus-operator .kali, .pembungkus-operator .bagi');
+        const equalButton = document.querySelector('.sama-dengan');
+        const clearButton = document.querySelector('.clear');
+
+        //menambahkan event listener ke tombol
+        numberButtons.forEach(button => button.addEventListener('click', () => onNumberButtonClick(button)));
+        operatorButtons.forEach(button => button.addEventListener('click', (event) => onOperatorButtonClick(event)));
+        equalButton.addEventListener('click', () => onEqualButtonClick());
+        clearButton.addEventListener('click', () => onClearButtonClick());
+    </script>
+</body>
+</html>

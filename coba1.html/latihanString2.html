@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>latihan string 2</title>
+</head>
+<body>
+    <script>
+        let a = "Hello World";
+        let b = a.split(" ");
+        console.log(b);
+
+        let c = "Hello World Hello";
+
+        function sensor(input) {
+        // Menggunakan metode replace() untuk mengganti semua kemunculan "Hello" dengan string kosong ""
+        let result = input.replace(/Hello/g, "");
+        return result;
+        }
+
+        console.log(c); // Output: "Hello World Hello"
+        console.log(sensor(c)); // Output: " World "
+
+        let d = "Hello World";
+        let e = d.indexOf("World");
+        console.log(e);
+
+        function caesarCipher(str, shift) {
+        let result = "";
+        for (let i = 0; i < str.length; i++) {
+        let char = str[i];
+        // Periksa apakah karakter adalah huruf alfabet
+        if (/[a-zA-Z]/.test(char)) {
+            // Tentukan apakah karakter adalah huruf besar atau kecil
+            let isUpperCase = char === char.toUpperCase();
+            // Ubah karakter sesuai dengan pergeseran
+            let code = str.charCodeAt(i) + shift;
+            if (isUpperCase) {
+                if (code > 90) {
+                    code -= 26;
+                }
+                if (code < 65) {
+                    code += 26;
+                }
+            } else {
+                if (code > 122) {
+                    code -= 26;
+                }
+                if (code < 97) {
+                    code += 26;
+                }
+            }
+            result += String.fromCharCode(code);
+        } else {
+            // Tambahkan karakter non-alfabet tanpa mengubahnya
+            result += char;
+        }
+        }
+        return result;
+        }
+
+        // Contoh penggunaan:
+        let string = "hello";
+        let shiftedString = caesarCipher(string, 3);
+        console.log(shiftedString); // Output: khoor
+
+    </script>
+</body>
+</html>

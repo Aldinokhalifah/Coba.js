@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="addElement()">Tambah Elemen</button>
+    <div id="container"></div>
+</body>
+
+<script>
+    function addElement() {
+        // Membuat elemen <p> baru
+        let p = document.createElement('p');
+
+        // Membuat node teks dan menambahkannya ke elemen <p>
+        let node = document.createTextNode('Elemen baru ditambahkan!');
+        p.appendChild(node);
+
+        // Menambahkan elemen <p> ke dalam container
+        let cont = document.getElementById('container');
+        cont.appendChild(p);
+    }
+</script>
+</html>
