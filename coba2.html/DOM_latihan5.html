@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Matching</title>
+    <style>
+        h1 {
+            margin-left: 50%;
+            margin-right: 50%;
+            color: pink;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="output"></h1>
+
+    <script>
+        const letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ ,.!";
+        const target = "Hello, world!";
+        let result = "";
+        let outputElement = document.getElementById('output');
+
+        function getRandomCharacter() {
+            return letters[Math.floor(Math.random() * letters.length)];
+        }
+
+        function matchTarget() {
+            let i = 0;
+            let interval = setInterval(() => {
+                let randomChar = getRandomCharacter();
+                outputElement.textContent = result + randomChar;
+                if (randomChar === target[i]) {
+                    result += randomChar;
+                    i++;
+                }
+
+                if (i >= target.length) {
+                    clearInterval(interval);  // Stop once all characters match
+                }
+            }, 100);  // 0.1 detik delay
+        }
+
+        matchTarget();
+    </script>
+</body>
+</html>

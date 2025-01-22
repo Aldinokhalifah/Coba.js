@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" onsubmit="kirimPesan()">
+        <label for="">Sapa</label>
+        <input type="text" id="pesan" name="sapa">
+        <button type="submit">Kirim</button>
+    </form>
+
+    <script>
+        function kirimPesan() {
+        const No_Telp = ''; //Masukkan Nomor Telepon yang dituju
+        const url = `https://api.whatsapp.com/send?phone=62${No_Telp}&text=${document.getElementById('pesan').value}`;
+        window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
