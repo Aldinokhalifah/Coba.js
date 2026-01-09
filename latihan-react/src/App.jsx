@@ -5,6 +5,7 @@ import FetchApi from './frontend/FetchApi'
 import FormValidation from './frontend/FormValidation'
 import ProductSearch from './frontend/ProductSearch'
 import SearchInput from './frontend/SearchInput'
+import ShowMore_ShowLess from './frontend/ShowMore_ShowLess'
 import TodoList from './frontend/TodoList'
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
       {/* <SearchInput /> */}
       {/* <CounterList /> */}
       {/* <ProductSearch /> */}
-      <FetchApi />
+      {/* <FetchApi /> */}
+      <ShowMore_ShowLess />
     </>
   )
 }
