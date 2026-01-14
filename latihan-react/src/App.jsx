@@ -9,6 +9,7 @@ import ShowMore_ShowLess from './frontend/ShowMore_ShowLess'
 import SimulasiQueryAPI from './frontend/SimulasiQueryAPI'
 import TodoList from './frontend/TodoList'
 import UserFilterbyStatus from './frontend/UserFilterbyStatus'
+import UserPagination from './frontend/UserPagination'
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
       {/* <FetchApi /> */}
       {/* <ShowMore_ShowLess /> */}
       {/* <UserFilterbyStatus /> */}
-      <SimulasiQueryAPI />
+      {/* <SimulasiQueryAPI /> */}
+      <UserPagination />
     </>
   )
 }
