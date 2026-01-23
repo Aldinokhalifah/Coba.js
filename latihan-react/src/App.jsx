@@ -4,6 +4,7 @@ import CounterList from './frontend/CounterList'
 import FetchApi from './frontend/FetchApi'
 import FormValidation from './frontend/FormValidation'
 import ProductSearch from './frontend/ProductSearch'
+import QueryApi from './frontend/QueryApi'
 import SearchInput from './frontend/SearchInput'
 import ShowMore_ShowLess from './frontend/ShowMore_ShowLess'
 import SimulasiQueryAPI from './frontend/SimulasiQueryAPI'
@@ -25,7 +26,8 @@ function App() {
       {/* <ShowMore_ShowLess /> */}
       {/* <UserFilterbyStatus /> */}
       {/* <SimulasiQueryAPI /> */}
-      <UserPagination />
+      {/* <UserPagination /> */}
+      <QueryApi />
     </>
   )
 }
