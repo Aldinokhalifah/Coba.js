@@ -1,6 +1,7 @@
 import './App.css'
 import CounterCard from './frontend/CounterCard'
 import CounterList from './frontend/CounterList'
+import DerivedState from './frontend/DerivedState'
 import FetchApi from './frontend/FetchApi'
 import FormValidation from './frontend/FormValidation'
 import ProductSearch from './frontend/ProductSearch'
@@ -27,7 +28,8 @@ function App() {
       {/* <UserFilterbyStatus /> */}
       {/* <SimulasiQueryAPI /> */}
       {/* <UserPagination /> */}
-      <QueryApi />
+      {/* <QueryApi /> */}
+      <DerivedState />
     </>
   )
 }
