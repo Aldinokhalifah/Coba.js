@@ -1,6 +1,7 @@
 // index.ts
 import express, { type Request, type Response, type NextFunction } from 'express';
 import router from './src/routes/user';
+import { testConnection } from './src/config/db';
 
 const app = express();
 const PORT = 3000;
@@ -20,6 +21,20 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 app.get('/', (req: Request, res: Response) => {
     res.send('Halo! Express ini berjalan di atas runtime Bun 🚀');
 });
+
+// Endpoint tes kondeksi database
+app.get('/test-connection', async (req: Request, res: Response) => {
+    const ok = await testConnection();
+    if (ok) {
+        res.status(200).json({
+        message: "Koneksi database berhasil",
+        });
+    } else {
+        res.status(500).json({
+        message: "Koneksi database gagal",
+        });
+    }
+})
 
 app.use('/api/users', userRoutes);
 
