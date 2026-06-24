@@ -4,7 +4,6 @@ import { UserController } from "../controllers/userController";
 const router = Router();
 const userController = new UserController();
 
-// Daftarkan semua endpoint user di sini
 router.get("/", userController.getUsers);
 router.post("/", userController.createUser);
 router.get("/search", userController.getByName);

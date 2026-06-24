@@ -1,5 +1,7 @@
 export interface User {
-    id: number;
-    nama: string;
-    role: string;
+    id?: string;
+    name: string;
+    password?: string;
+    email: string;
+    whatsapp_phone?: number | null;
 }

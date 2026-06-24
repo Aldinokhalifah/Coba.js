@@ -60,26 +60,19 @@ export class UserController {
 
     updateUser = async (req: Request, res: Response): Promise<void> => {
         try {
-            const idParams = req.params.id;
-            const id = Number(idParams);
+            const id = req.params.id;              
+
             const user = req.body;
-
-            if(!id) {
-                res.status(400).json({ status: 'error', message: 'ID wajib diisi' });
-                return;
-            }
-
             if (!user || Object.keys(user).length === 0) {
                 res.status(400).json({ status: 'error', message: 'Body user wajib diisi' });
                 return;
             }
 
             const response = await this.userService.updateUser(id, user);
-
             res.status(200).json({
                 status: 'success',
                 message: 'User berhasil diupdate',
-                data: response
+                data: response,
             });
         } catch (error) {
             if (error instanceof Error) {
@@ -88,21 +81,14 @@ export class UserController {
                 res.status(500).json({ status: "error", message: "Internal Server Error" });
             }
         }
-    }
+    };
 
     deleteUser = async (req: Request, res: Response): Promise<void> => {
         try {
-            const idParams = req.params.id;
-            const id = Number(idParams);
+            const id = req.params.id;
 
-            if(!id) {
-                res.status(400).json({ status: 'error', message: 'ID wajib diisi' });
-                return;
-            }
-
-            const response = await this.userService.deleteUser(id);
-
-            if (!response) {
+            const deleted = await this.userService.deleteUser(id);
+            if (!deleted) {
                 res.status(404).json({ status: 'error', message: 'User tidak ditemukan' });
                 return;
             }
@@ -110,7 +96,7 @@ export class UserController {
             res.status(200).json({
                 status: 'success',
                 message: 'User berhasil dihapus',
-                data: response
+                data: deleted,
             });
         } catch (error) {
             if (error instanceof Error) {
@@ -119,5 +105,5 @@ export class UserController {
                 res.status(500).json({ status: "error", message: "Internal Server Error" });
             }
         }
-    }
+    };
 }

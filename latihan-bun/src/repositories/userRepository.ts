@@ -1,48 +1,82 @@
+import { db } from "../config/db";
 import { type User } from "../models/User";
 
 export class UserRepository {
     // Simulasi database di dalam memori
-    private users: User[] = [
-        { id: 1, nama: "Aldino", role: "Fullstack Developer" },
-        { id: 2, nama: "Budi", role: "Backend Engineer" }
-    ];
+    // private users: User[] = [
+    //     { id: 1, nama: "Aldino", role: "Fullstack Developer" },
+    //     { id: 2, nama: "Budi", role: "Backend Engineer" }
+    // ];
 
     async findAll(): Promise<User[]> {
-        return this.users;
+        const query =  'SELECT id, name, email, whatsapp_phone, created_at FROM users';
+        const result = await db.query(query);
+        return result.rows as User[];
     }
 
-    async findByName(nama: string): Promise<User | undefined> {
-        return this.users.find((u) => u.nama.toLocaleLowerCase() === nama.toLocaleLowerCase());
+    async findByName(nama: string): Promise<User[] | undefined> {
+        const query = 'SELECT id, name, email, whatsapp_phone, created_at FROM users WHERE name ILIKE $1'
+        const result = await db.query(query, [`%${nama}%`]);
+        return result.rows as User[]
     }
 
     async createUser(user: User): Promise<User | undefined> {
-        this.users.push(user);
-        return user;
+        const query = 
+            `INSERT INTO users (name, email, password_hash, whatsapp_phone)
+            VALUES ($1, $2, $3, $4)
+            RETURNING id, name, email, avatar_url, whatsapp_phone, created_at`
+        const result = await db.query(query, [user.name, user.email, user.password, user.whatsapp_phone])
+        return result.rows[0]
     }
 
-    async updateUser(id: number, user: User): Promise<User | undefined> {
-        const userIndex = this.users.findIndex((u) => u.id === id);
+    async updateUser(id: string, user: User): Promise<User | undefined> {
+        // Bangun query dinamis (hanya kolom yang ada yang di‑update)
+        const fields: string[] = [];
+        const values: any[] = [id]; // $1 = id (UUID)
 
-        if (userIndex === -1) {
-            return undefined;
+        if (user.name !== undefined) {
+            fields.push(`name = $${values.length + 1}`);
+            values.push(user.name);
+        }
+        if (user.email !== undefined) {
+            fields.push(`email = $${values.length + 1}`);
+            values.push(user.email);
+        }
+        if (user.password !== undefined) {
+            fields.push(`password_hash = $${values.length + 1}`);
+            values.push(user.password);
+        }
+        if (user.whatsapp_phone !== undefined) {
+            fields.push(`whatsapp_phone = $${values.length + 1}`);
+            values.push(user.whatsapp_phone);
         }
 
-        const existingUser = this.users[userIndex]!;
-        existingUser.nama = user.nama;
-        existingUser.role = user.role;
+        // Jika tidak ada field yang di‑update, cukup kembalikan data lama
+        if (fields.length === 0) {
+            const result = await db.query(
+                `SELECT id, name, email, avatar_url, whatsapp_phone, created_at FROM users WHERE id = $1`,
+                [id]
+            );
+            return result.rows[0];
+        }
 
-        this.users[userIndex] = existingUser;
-        return existingUser;
+        const query = `
+            UPDATE users
+            SET ${fields.join(", ")}
+            WHERE id = $1
+            RETURNING id, name, email, avatar_url, whatsapp_phone, created_at`;
+
+        const result = await db.query(query, values);
+        return result.rows[0];
     }
 
-    async deleteUser(id: number): Promise<User | undefined> {
-        const userIndex = this.users.findIndex((u) => u.id === id);
-
-        if (userIndex === -1) {
-            return undefined;               
-        }
-
-        const [deletedUser] = this.users.splice(userIndex, 1);
-        return deletedUser;                
+    async deleteUser(id: string): Promise<User | undefined> {
+        const result = await db.query(
+            `DELETE FROM users
+            WHERE id = $1
+            RETURNING id, name, email, avatar_url, whatsapp_phone, created_at`,
+            [id]
+        );
+        return result.rows[0];
     }
 }
